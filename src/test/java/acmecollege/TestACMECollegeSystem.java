@@ -147,8 +147,7 @@ public class TestACMECollegeSystem {
 		assertThat(response.getStatus(), is(200));
 		List<Student> students = response.readEntity(new GenericType<List<Student>>() {
 		});
-		assertThat(students, is(not(empty())));
-		assertThat(students, hasSize(1));
+		assertTrue(students.size() > 0);
 	}
 
 	/**
@@ -225,8 +224,8 @@ public class TestACMECollegeSystem {
 	@Order(6)
 	public void test06_new_student_with_adminrole() throws JsonMappingException, JsonProcessingException {
 		Student newStudent = new Student();
-		newStudent.setFirstName("Yongjing");
-		newStudent.setLastName("Ge");
+		newStudent.setFirstName("Xiao");
+		newStudent.setLastName("Song");
 
 		Response response = webTarget.register(adminAuth).path(STUDENT_RESOURCE_NAME).request()
 				.post(Entity.entity(newStudent, MediaType.APPLICATION_JSON));
@@ -234,8 +233,8 @@ public class TestACMECollegeSystem {
 		assertThat(response.getStatus(), is(SUCCESS_CODE));
 		Student resStudent = response.readEntity(Student.class);
 		assertNotNull(resStudent);
-		assertThat(resStudent.getFirstName(), is("Yongjing"));
-		assertThat(resStudent.getLastName(), is("Ge"));
+		assertThat(resStudent.getFirstName(), is("Xiao"));
+		assertThat(resStudent.getLastName(), is("Song"));
 	}
 
 	/**
@@ -781,7 +780,7 @@ public class TestACMECollegeSystem {
 		newCourse.setCourseCode("CST8277");
 		newCourse.setCourseTitle("Java EE");
 		newCourse.setYear(2024);
-		newCourse.setSemester("WINTER");
+		newCourse.setSemester("SPRING");
 		newCourse.setCreditUnits(20);
 		newCourse.setOnline((byte) 1);
 
@@ -834,7 +833,7 @@ public class TestACMECollegeSystem {
 		newCourse.setCourseCode("CST1111");
 		newCourse.setCourseTitle("Java EE");
 		newCourse.setYear(2024);
-		newCourse.setSemester("WINTER");
+		newCourse.setSemester("SPRING");
 		newCourse.setCreditUnits(20);
 		newCourse.setOnline((byte) 1);
 

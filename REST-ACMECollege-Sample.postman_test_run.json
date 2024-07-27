@@ -1,0 +1,726 @@
+{
+	"id": "5a554f19-ca05-449e-8694-0b721845d81a",
+	"name": "REST-ACMECollege-Sample",
+	"timestamp": "2024-07-27T04:20:45.752Z",
+	"collection_id": "28611430-c7f6201d-c712-4767-ac5c-7c66c1e75387",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-07-27T04:20:35.223Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9da8a4c3-1283-483c-a261-0d954a6ed2bd",
+			"name": "GET All Students (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/student",
+			"time": 38,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				38
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8ccfb277-c528-43a9-acbf-f1a667526693",
+			"name": "GET All Students (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/student/1",
+			"time": 28,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				28
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f88d7233-e2e5-4bd5-848c-49fa48005212",
+			"name": "GET Student By ID (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/student/1",
+			"time": 24,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				24
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "144ce628-e506-4711-a2ef-9d324c313923",
+			"name": "GET Student By ID (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/student/1",
+			"time": 31,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				31
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b2232959-b0ae-4917-ab20-5de2e693a233",
+			"name": "POST New Student (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/student",
+			"time": 52,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				52
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "16ffe618-2e89-41f0-85c9-53d1d96cc3c4",
+			"name": "POST New Student (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/student",
+			"time": 27,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				27
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "46b5760e-21e9-4f1d-9264-21aa91413249",
+			"name": "DELETE Student By ID (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/student/2",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "73be4dbd-971b-43fe-9a8f-ab9b8d4a6260",
+			"name": "DELETE Student By ID (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/student/2",
+			"time": 12,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a162d180-9e8f-4686-a0c6-063509ecf906",
+			"name": "GET All Peer Tutors (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/peertutor",
+			"time": 2504,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2504
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "75261080-ed96-4a15-ba76-e95fbb31b87f",
+			"name": "GET All Peer Tutors (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/peertutor",
+			"time": 51,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				51
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ea7ae032-a1cf-4942-a7d9-ee26a64ba88b",
+			"name": "GET Profesor By ID (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/peertutor/1",
+			"time": 2036,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2036
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "81044dcd-663d-43d2-86d4-96d777d4218f",
+			"name": "GET Peer Tutor By ID (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/peertutor/1",
+			"time": 2187,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2187
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d571797b-80da-42a0-9a1d-0c82b279df16",
+			"name": "POST New Peer Tutor (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/peertutor",
+			"time": 41,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				41
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5e947a4c-4378-4291-862b-caaea7d69773",
+			"name": "POST New Peer Tutor (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/peertutor",
+			"time": 25,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a69e391d-b480-4990-80f4-45b9be2f4d32",
+			"name": "DELETE Peer Tutor By ID (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/peertutor/2",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1ea1fed8-cbf6-47f6-8397-a973d0b646ea",
+			"name": "DELETE Peer Tutor By ID (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/peertutor/2",
+			"time": 19,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				19
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "dacc0149-3800-4420-9adc-55615ccf8538",
+			"name": "GET All Courses (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/course",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				23
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d5776d2f-4864-492f-a9c5-d48adc2aef05",
+			"name": "GET All Courses (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/course",
+			"time": 26,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				26
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "46579adc-93e2-406e-83b0-4896896e827d",
+			"name": "GET Course By ID (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/course/1",
+			"time": 28,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				28
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c470508c-9c1c-4f38-a1c5-a6b9c91cad29",
+			"name": "GET Course By ID (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/course/1",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				22
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0e53f830-aa26-42d6-91ee-fec2273277ed",
+			"name": "POST New Course (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/course",
+			"time": 29,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				29
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "988729d4-c9e3-45a8-9883-af79b3208a38",
+			"name": "POST New Course (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/course",
+			"time": 23,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				23
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f1f32f7f-4d48-4cad-a045-163a8c2b117e",
+			"name": "DELETE Course By ID (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/course/3",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				23
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bbd24bb4-896b-4e90-bcff-4d498d1cd9a6",
+			"name": "DELETE Course By ID (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/course/3",
+			"time": 23,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				23
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7e2d6656-eb71-4193-9f58-4bddde0f39f4",
+			"name": "GET All Student Clubs (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/studentclub",
+			"time": 24,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				24
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3d552f6e-ddf9-43ce-84b8-b285a447bef4",
+			"name": "GET All Student Clubs (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/studentclub",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				34
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bc130f5b-5233-486f-b68b-a208e9fb0f9e",
+			"name": "GET Student Club By ID (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/studentclub/2",
+			"time": 37,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				37
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5d355a23-5e91-4e5b-9c2d-bf08a6e29559",
+			"name": "GET Student Club By ID (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/studentclub/1",
+			"time": 28,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				28
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5bca0985-9ac4-4e22-a542-6849c278302a",
+			"name": "POST New Student Club (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/studentclub",
+			"time": 50,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				50
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c6be0b7a-d484-4baa-b7e9-538579370ae3",
+			"name": "POST New Student Club (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/studentclub",
+			"time": 9,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bbcc435d-4f25-4b7d-a631-88bb15a9fe85",
+			"name": "DELETE Student Club By ID (admin)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/studentclub/3",
+			"time": 27,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				27
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ad4ab537-32c1-450b-a956-9fc40a0907f2",
+			"name": "DELETE Student Club By ID (user)",
+			"url": "http://localhost:8080/rest-acmecollege/api/v1/studentclub/2",
+			"time": 11,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 7538,
+	"collection": {
+		"requests": [
+			{
+				"id": "9da8a4c3-1283-483c-a261-0d954a6ed2bd",
+				"method": "GET"
+			},
+			{
+				"id": "8ccfb277-c528-43a9-acbf-f1a667526693",
+				"method": "GET"
+			},
+			{
+				"id": "f88d7233-e2e5-4bd5-848c-49fa48005212",
+				"method": "GET"
+			},
+			{
+				"id": "144ce628-e506-4711-a2ef-9d324c313923",
+				"method": "GET"
+			},
+			{
+				"id": "b2232959-b0ae-4917-ab20-5de2e693a233",
+				"method": "POST"
+			},
+			{
+				"id": "16ffe618-2e89-41f0-85c9-53d1d96cc3c4",
+				"method": "POST"
+			},
+			{
+				"id": "46b5760e-21e9-4f1d-9264-21aa91413249",
+				"method": "DELETE"
+			},
+			{
+				"id": "73be4dbd-971b-43fe-9a8f-ab9b8d4a6260",
+				"method": "DELETE"
+			},
+			{
+				"id": "a162d180-9e8f-4686-a0c6-063509ecf906",
+				"method": "GET"
+			},
+			{
+				"id": "75261080-ed96-4a15-ba76-e95fbb31b87f",
+				"method": "GET"
+			},
+			{
+				"id": "ea7ae032-a1cf-4942-a7d9-ee26a64ba88b",
+				"method": "GET"
+			},
+			{
+				"id": "81044dcd-663d-43d2-86d4-96d777d4218f",
+				"method": "GET"
+			},
+			{
+				"id": "d571797b-80da-42a0-9a1d-0c82b279df16",
+				"method": "POST"
+			},
+			{
+				"id": "5e947a4c-4378-4291-862b-caaea7d69773",
+				"method": "POST"
+			},
+			{
+				"id": "a69e391d-b480-4990-80f4-45b9be2f4d32",
+				"method": "DELETE"
+			},
+			{
+				"id": "1ea1fed8-cbf6-47f6-8397-a973d0b646ea",
+				"method": "DELETE"
+			},
+			{
+				"id": "dacc0149-3800-4420-9adc-55615ccf8538",
+				"method": "GET"
+			},
+			{
+				"id": "d5776d2f-4864-492f-a9c5-d48adc2aef05",
+				"method": "GET"
+			},
+			{
+				"id": "46579adc-93e2-406e-83b0-4896896e827d",
+				"method": "GET"
+			},
+			{
+				"id": "c470508c-9c1c-4f38-a1c5-a6b9c91cad29",
+				"method": "GET"
+			},
+			{
+				"id": "0e53f830-aa26-42d6-91ee-fec2273277ed",
+				"method": "POST"
+			},
+			{
+				"id": "988729d4-c9e3-45a8-9883-af79b3208a38",
+				"method": "POST"
+			},
+			{
+				"id": "f1f32f7f-4d48-4cad-a045-163a8c2b117e",
+				"method": "DELETE"
+			},
+			{
+				"id": "bbd24bb4-896b-4e90-bcff-4d498d1cd9a6",
+				"method": "DELETE"
+			},
+			{
+				"id": "7e2d6656-eb71-4193-9f58-4bddde0f39f4",
+				"method": "GET"
+			},
+			{
+				"id": "3d552f6e-ddf9-43ce-84b8-b285a447bef4",
+				"method": "GET"
+			},
+			{
+				"id": "bc130f5b-5233-486f-b68b-a208e9fb0f9e",
+				"method": "GET"
+			},
+			{
+				"id": "5d355a23-5e91-4e5b-9c2d-bf08a6e29559",
+				"method": "GET"
+			},
+			{
+				"id": "5bca0985-9ac4-4e22-a542-6849c278302a",
+				"method": "POST"
+			},
+			{
+				"id": "c6be0b7a-d484-4baa-b7e9-538579370ae3",
+				"method": "POST"
+			},
+			{
+				"id": "bbcc435d-4f25-4b7d-a631-88bb15a9fe85",
+				"method": "DELETE"
+			},
+			{
+				"id": "ad4ab537-32c1-450b-a956-9fc40a0907f2",
+				"method": "DELETE"
+			}
+		]
+	}
+}
