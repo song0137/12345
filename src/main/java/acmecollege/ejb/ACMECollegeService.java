@@ -263,6 +263,7 @@ public class ACMECollegeService implements Serializable {
     // Please study & use the methods below in your test suites
     
     public boolean isDuplicated(StudentClub newStudentClub) {
+    	em.flush();
         TypedQuery<Long> allStudentClubsQuery = em.createNamedQuery(IS_DUPLICATE_QUERY_NAME, Long.class);
         allStudentClubsQuery.setParameter(PARAM1, newStudentClub.getName());
         System.out.println(allStudentClubsQuery.toString());

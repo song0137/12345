@@ -36,6 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static acmecollege.utility.MyConstants.CLUB_MEMBERSHIP_RESOURCE_NAME;
 import static acmecollege.utility.MyConstants.COURSE_RESOURCE_NAME;
 import static acmecollege.utility.MyConstants.MEMBERSHIP_CARD_RESOURCE_NAME;
+import static acmecollege.utility.MyConstants.PEER_TUTOR_REGISTRATION_RESOURCE_NAME;
 import static acmecollege.utility.MyConstants.PEER_TUTOR_SUBRESOURCE_NAME;
 import static acmecollege.utility.MyConstants.STUDENT_CLUB_RESOURCE_NAME;
 
@@ -77,6 +78,7 @@ import acmecollege.entity.ClubMembership;
 import acmecollege.entity.Course;
 import acmecollege.entity.NonAcademicStudentClub;
 import acmecollege.entity.PeerTutor;
+import acmecollege.entity.PeerTutorRegistration;
 import acmecollege.entity.StudentClub;
 
 @SuppressWarnings("unused")
@@ -970,6 +972,29 @@ public class TestACMECollegeSystem {
 		assertTrue(message.contains("Deleted a peer tutor with id: " + removalId));
 
 	}
+	
+	@Test
+	@Order(41)
+	public void test41_getAllPeerTutorRegistrations_with_adminrole() throws JsonMappingException, JsonProcessingException {
+		Response response = webTarget.register(adminAuth).path(PEER_TUTOR_REGISTRATION_RESOURCE_NAME).request().get();
+		assertThat(response.getStatus(), is(SUCCESS_CODE));
+	}
+
+	@Test
+	@Order(42)
+	public void test42_getAllPeerTutorRegistrations_with_userrole() throws JsonMappingException, JsonProcessingException {
+		Response response = webTarget.register(userAuth).path(PEER_TUTOR_REGISTRATION_RESOURCE_NAME).request().get();
+		assertThat(response.getStatus(), is(FORBIDDEN_CODE));
+	}
+
+	@Test
+	@Order(43)
+	public void test43_getAllPeerTutorRegistrations_with_not_authenticated_user() throws JsonMappingException, JsonProcessingException {
+		Response response = webTarget.register(notAuthenticatedAuth).path(PEER_TUTOR_REGISTRATION_RESOURCE_NAME).request().get();
+		assertThat(response.getStatus(), is(UNAUTHORIZED_CODE));
+	}
+
+
 
 	private Response removeClub(int removalId) {
 		return webTarget.register(adminAuth).path(STUDENT_CLUB_RESOURCE_NAME + "/" + removalId).request().delete();
