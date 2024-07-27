@@ -58,6 +58,7 @@ public class StudentClubResource {
     protected SecurityContext sc;
     
     @GET
+    @RolesAllowed({ADMIN_ROLE, USER_ROLE})
     public Response getStudentClubs() {
         LOG.debug("Retrieving all student clubs...");
         List<StudentClub> studentClubs = service.getAllStudentClubs();
@@ -73,7 +74,8 @@ public class StudentClubResource {
     public Response getStudentClubById(@PathParam("studentClubId") int studentClubId) {
         LOG.debug("Retrieving student club with id = {}", studentClubId);
         StudentClub studentClub = service.getStudentClubById(studentClubId);
-        Response response = Response.ok(studentClub).build();
+       
+        Response response = studentClub == null ? Response.status(404).build() : Response.ok(studentClub).build();
         return response;
     }
 

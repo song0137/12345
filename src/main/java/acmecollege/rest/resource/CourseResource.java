@@ -26,6 +26,7 @@ import javax.inject.Inject;
 import javax.security.enterprise.SecurityContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -55,30 +56,36 @@ public class CourseResource {
 	protected SecurityContext sc;
 
 	@POST
-	@RolesAllowed({ ADMIN_ROLE})
+	@RolesAllowed({ ADMIN_ROLE })
 	public Response addCourse(Course newCourse) {
 		LOG.debug("Adding a new course: ", newCourse);
 		Response response = null;
 		Course courseToBeAdded = null;
-		
-//		if (!sc.isCallerInRole(ADMIN_ROLE)) {
-//	        throw new ForbiddenException("Unauthorized access: Admin role required");
-//	    }
-		courseToBeAdded = service.addCourse(newCourse);
+
+		if (!sc.isCallerInRole(ADMIN_ROLE)) {
+	        throw new ForbiddenException("Unauthorized access: Admin role required");
+	    }
+		try {
+			courseToBeAdded = service.addCourse(newCourse);
+		} catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+        }
+				
 		response = Response.ok(courseToBeAdded).build();
-		
+
 		return response;
 	}
-	
+
 	@GET
 	@RolesAllowed({ ADMIN_ROLE, USER_ROLE })
 	public Response getAllCourses() {
 		LOG.debug("Retrieving all students ...");
 		Response response = Response.noContent().build();
-		
+
 		List<Course> courses = service.getAllCourses();
 		response = Response.ok(courses).build();
-		
+
 		return response;
 	}
 
@@ -96,21 +103,21 @@ public class CourseResource {
 		return response;
 	}
 
-	
 	@PUT
 	@RolesAllowed({ ADMIN_ROLE })
 	@Path(RESOURCE_PATH_ID_PATH)
 	public Response updateCourse(@PathParam(RESOURCE_PATH_ID_ELEMENT) int id, Course updatedCourse) {
 		LOG.debug("Updating course with id " + id);
-		
+
 		Response response = null;
 		Course courseToBeUpdated = null;
 		courseToBeUpdated = service.updateCourseById(id, updatedCourse);
-		response = Response.status(courseToBeUpdated == null ? Status.NOT_FOUND : Status.OK).entity(courseToBeUpdated).build();
-		
+		response = Response.status(courseToBeUpdated == null ? Status.NOT_FOUND : Status.OK).entity(courseToBeUpdated)
+				.build();
+
 		return response;
 	}
-	
+
 	@DELETE
 	@RolesAllowed({ ADMIN_ROLE })
 	@Path(RESOURCE_PATH_ID_PATH)
@@ -121,7 +128,5 @@ public class CourseResource {
 
 		return response;
 	}
-	
-	
 
 }

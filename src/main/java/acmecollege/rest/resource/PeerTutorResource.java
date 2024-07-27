@@ -77,8 +77,6 @@ public class PeerTutorResource {
 		return Response.ok(peerTutor).build();
 	}
 
-
-
 	@POST
 	@RolesAllowed({ ADMIN_ROLE })
 	public Response addPeerTutor(PeerTutor newPeerTutor) {

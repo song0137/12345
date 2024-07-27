@@ -96,12 +96,15 @@ public class ClubMembershipResource {
     		}
     		
     		else {
+    			sc = service.findStudentClubById(cid);
+    			
     			ClubMembership cm = new ClubMembership();
     			cm.setStudentClub(sc);
     			DurationAndStatus das = new DurationAndStatus();
     			LocalDateTime current = LocalDateTime.now();
     			das.setStartDate(current);
     			das.setEndDate(current.plusYears(2));
+    			cm.setCreated(current);
     			cm.setDurationAndStatus(das);
     			cm = service.persistClubMembership(cm);
     			return Response.status(Status.OK).entity(cm).build();

@@ -222,6 +222,10 @@ public class ACMECollegeService implements Serializable {
         }
 
     }
+
+     public StudentClub findStudentClubById(int cid) {
+         return em.find(StudentClub.class, cid);
+     }
     
     // These methods are more generic.
 
@@ -288,6 +292,8 @@ public class ACMECollegeService implements Serializable {
     /* CRUD for ClubMembership */
     @Transactional
     public ClubMembership persistClubMembership(ClubMembership newClubMembership) {
+        em.flush();
+        em.clear();
         em.persist(newClubMembership);
         return newClubMembership;
     }
@@ -468,6 +474,10 @@ public class ACMECollegeService implements Serializable {
 			em.refresh(deletePTutorRegistration);
 			em.remove(deletePTutorRegistration);
 		}
+	}
+
+	public StudentClub mergeStudentClub(StudentClub sc) {
+		return em.merge(sc);
 	}
 
 	
