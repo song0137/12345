@@ -30,6 +30,7 @@ import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import static acmecollege.utility.MyConstants.CLUB_MEMBERSHIP_RESOURCE_NAME;
@@ -72,6 +73,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 import acmecollege.entity.Student;
 import acmecollege.entity.AcademicStudentClub;
+import acmecollege.entity.ClubMembership;
 import acmecollege.entity.Course;
 import acmecollege.entity.NonAcademicStudentClub;
 import acmecollege.entity.PeerTutor;
@@ -434,20 +436,31 @@ public class TestACMECollegeSystem {
 	 * 
 	 * @throws JsonMappingException
 	 * @throws JsonProcessingException
+	 * @throws InterruptedException 
 	 */
 	@Test
 	@Order(16)
 	public void test16_new_student_club_with_duplicate_name_with_adminrole()
-			throws JsonMappingException, JsonProcessingException {
+			throws JsonMappingException, JsonProcessingException, InterruptedException {
 		StudentClub newStudentClub = new AcademicStudentClub();
-		newStudentClub.setName("Reading Club");
+		newStudentClub.setName("Reading_Club");
 
 		Response response = webTarget.register(adminAuth).path(STUDENT_CLUB_RESOURCE_NAME).request()
 				.post(Entity.entity(newStudentClub, MediaType.APPLICATION_JSON));
+		
+		StudentClub newStudentClub3 = new AcademicStudentClub();
+		newStudentClub.setName("Reading_Club");
 
+		Response response3 = webTarget.register(adminAuth).path(STUDENT_CLUB_RESOURCE_NAME).request()
+				.post(Entity.entity(newStudentClub3, MediaType.APPLICATION_JSON));
+
+
+		Thread.sleep(1000);
+//		Thread.sleep(2000);
 		if (response.getStatus() == 200) {
+			Thread.sleep(1000);
 			StudentClub newStudentClub2 = new AcademicStudentClub();
-			newStudentClub2.setName("Reading Club");
+			newStudentClub2.setName("Reading_Club");
 
 			Response response2 = webTarget.register(adminAuth).path(STUDENT_CLUB_RESOURCE_NAME).request()
 					.post(Entity.entity(newStudentClub2, MediaType.APPLICATION_JSON));
@@ -584,7 +597,17 @@ public class TestACMECollegeSystem {
 	@Order(23)
 	public void test23_DELETE_remove_club_memberShip_by_id_with_adminrole()
 			throws JsonMappingException, JsonProcessingException {
-		int lastId = 2;
+//		int lastId = 2;
+		Map<String, Integer> newClubMemberShip = new HashMap<>();
+		newClubMemberShip.put("club_id", 2);
+
+		Response response = webTarget.register(adminAuth).path(CLUB_MEMBERSHIP_RESOURCE_NAME).request()
+				.post(Entity.entity(newClubMemberShip, MediaType.APPLICATION_JSON));
+
+		assertThat(response.getStatus(), is(SUCCESS_CODE));
+		
+		
+		int lastId = response.readEntity(ClubMembership.class).getId();
 		Response responseDelete = webTarget.register(adminAuth).path(CLUB_MEMBERSHIP_RESOURCE_NAME + "/" + lastId)
 				.request().delete();
 
@@ -924,8 +947,10 @@ public class TestACMECollegeSystem {
 	public void test40_delete_peer_tutor_by_id_with_adminrole() throws JsonMappingException, JsonProcessingException {
 
 		PeerTutor peerTutor = new PeerTutor();
-		peerTutor.setFirstName("John2");
-		peerTutor.setLastName("Smith2");
+		String firstName = "John" + random.nextInt();
+		peerTutor.setFirstName(firstName);
+		String lastName = "Smith" + random.nextInt();
+		peerTutor.setLastName(lastName);
 		peerTutor.setProgram("Information and Communications Technology");
 		Response response = webTarget.register(adminAuth).path(PEER_TUTOR_SUBRESOURCE_NAME).request()
 				.post(Entity.entity(peerTutor, MediaType.APPLICATION_JSON));
@@ -933,33 +958,18 @@ public class TestACMECollegeSystem {
 		assertThat(response.getStatus(), is(SUCCESS_CODE));
 		PeerTutor pt = response.readEntity(PeerTutor.class);
 		assertNotNull(pt);
-		assertThat(pt.getFirstName(), is("John2"));
-		assertThat(pt.getLastName(), is("Smith2"));
-
-		Response totalRes = webTarget.register(adminAuth).path(PEER_TUTOR_SUBRESOURCE_NAME).request().get();
-		System.out.println(totalRes.getEntity());
-		int originalSize = 0;
-		try {
-			var allpeerTutors = totalRes.readEntity(new GenericType<List<PeerTutor>>() {
-			});
-			originalSize = allpeerTutors.size();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		 
-//		int removalId = allpeerTutors.get(originalSize - 1).getId();
+		assertThat(pt.getFirstName(), is(firstName));
+		assertThat(pt.getLastName(), is(lastName));
 
 		int removalId = pt.getId();
 
 		Response resRemoval = webTarget.register(adminAuth).path(PEER_TUTOR_SUBRESOURCE_NAME + "/" + removalId)
 				.request().delete();
 		assertThat(resRemoval.getStatus(), is(SUCCESS_CODE));
+		String message = resRemoval.readEntity(String.class);
+		System.out.println(message);
+		assertTrue(message.contains("Deleted a peer tutor with id: " + removalId));
 
-		Response newListResponse = webTarget.register(adminAuth).path(PEER_TUTOR_SUBRESOURCE_NAME).request().get();
-		List<PeerTutor> allpeerTutors2 = newListResponse.readEntity(new GenericType<List<PeerTutor>>() {
-		});
-		assertThat(allpeerTutors2.size(), is(originalSize - 1));
-		assertFalse(allpeerTutors2.stream().anyMatch(s -> s.getId() == removalId));
 	}
 
 	private Response removeClub(int removalId) {

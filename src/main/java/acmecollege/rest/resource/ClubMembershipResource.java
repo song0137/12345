@@ -46,6 +46,7 @@ import org.apache.logging.log4j.Logger;
 import acmecollege.ejb.ACMECollegeService;
 import acmecollege.entity.ClubMembership;
 import acmecollege.entity.DurationAndStatus;
+import acmecollege.entity.MembershipCard;
 import acmecollege.entity.StudentClub;
 
 @Path(CLUB_MEMBERSHIP_RESOURCE_NAME)
@@ -96,7 +97,9 @@ public class ClubMembershipResource {
     		}
     		
     		else {
-    			sc = service.findStudentClubById(cid);
+//    			sc = service.findStudentClubById(cid);
+    			
+    			MembershipCard membershipCardById = service.getMembershipCardById(1);
     			
     			ClubMembership cm = new ClubMembership();
     			cm.setStudentClub(sc);
@@ -106,6 +109,7 @@ public class ClubMembershipResource {
     			das.setEndDate(current.plusYears(2));
     			cm.setCreated(current);
     			cm.setDurationAndStatus(das);
+//    			cm.setCard(membershipCardById);
     			cm = service.persistClubMembership(cm);
     			return Response.status(Status.OK).entity(cm).build();
     		}

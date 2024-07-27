@@ -56,7 +56,7 @@ public class ClubMembership extends PojoBase implements Serializable {
     public static final String FIND_BY_ID = "ClubMembership.findById"; 
     
 	// TODO CM03 - Add annotations for M:1.  Changes to this class should cascade to StudentClub.
-    @ManyToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = { CascadeType.DETACH }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "club_id")
     private StudentClub club;
 

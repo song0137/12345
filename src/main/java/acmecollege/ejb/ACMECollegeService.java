@@ -124,8 +124,6 @@ public class ACMECollegeService implements Serializable {
         TypedQuery<SecurityRole> findRole = em.createNamedQuery(SECURITY_ROLE_BY_NAME, SecurityRole.class);
         findRole.setParameter(PARAM1, USER_ROLE);
         SecurityRole userRole = findRole.getSingleResult();
-
-
         
         userForNewStudent.getRoles().add(userRole);
         userRole.getUsers().add(userForNewStudent);
@@ -267,6 +265,7 @@ public class ACMECollegeService implements Serializable {
     public boolean isDuplicated(StudentClub newStudentClub) {
         TypedQuery<Long> allStudentClubsQuery = em.createNamedQuery(IS_DUPLICATE_QUERY_NAME, Long.class);
         allStudentClubsQuery.setParameter(PARAM1, newStudentClub.getName());
+        System.out.println(allStudentClubsQuery.toString());
         return (allStudentClubsQuery.getSingleResult() >= 1);
     }
 
